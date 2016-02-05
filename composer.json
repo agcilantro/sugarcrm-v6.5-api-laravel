@@ -1,0 +1,45 @@
+{
+    "name": "daryllukas/sugarcrm-v6.5-api-laravel",
+    "type": "library",
+    "description": "SugarCRM 6.5 SOAP API Wrapper for laravel 5",
+    "keywords": [
+        "daryllukas",
+        "sugarcrm-v6.5-api-laravel"
+    ],
+    "homepage": "https://github.com/daryllukas/sugarcrm-v6.5-api-laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daryl Lukas",
+            "email": "me@daryllukas.co",
+            "homepage": "http://daryllukas.co",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "daryllukas\\sugarcrm-v6.5-api-laravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "daryllukas\\sugarcrm-v6.5-api-laravel\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
