@@ -4,7 +4,9 @@
     "description": "SugarCRM 6.5 SOAP API Wrapper for laravel 5",
     "keywords": [
         "daryllukas",
-        "sugarcrm-v6.5-api-laravel"
+        "sugarcrm-v6.5-api-laravel",
+        "laravel",
+        "sugarcrm"
     ],
     "homepage": "https://github.com/daryllukas/sugarcrm-v6.5-api-laravel",
     "license": "MIT",
