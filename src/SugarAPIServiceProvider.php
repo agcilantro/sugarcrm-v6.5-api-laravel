@@ -31,7 +31,7 @@ class SugarAPIServiceProvider extends ServiceProvider {
         );
 
         App::bind('sugarcrm', function() {
-            return new LaravelReeve;
+            return new SugarAPI;
         });
 
     }
