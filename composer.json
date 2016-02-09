@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "daryllukas\\sugarcrm-v6.5-api-laravel\\": "src"
+            "Daryl\\SugarAPI\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "daryllukas\\sugarcrm-v6.5-api-laravel\\Test\\": "tests"
+            "Daryl\\SugarAPI\\Test\\": "tests"
         }
     },
     "scripts": {
