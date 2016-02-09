@@ -16,9 +16,9 @@ class SugarAPI
 
     public function __construct()
     {
-        $this->apiUrl = Config::get('l5-sugar.url');
-        $this->username = Config::get('l5-sugar.username');
-        $this->password = Config::get('l5-sugar.password');
+        $this->apiUrl = Config::get('l5-sugarcrm.url');
+        $this->username = Config::get('l5-sugarcrm.username');
+        $this->password = Config::get('l5-sugarcrm.password');
 
         $this->nusoapClient = new nusoap_client($this->apiUrl, true);
 
@@ -44,6 +44,7 @@ class SugarAPI
 
             return true;
         } else {
+            abort(500, 'SugarCRM API Authentication Error.');
             return false;
         }
 
