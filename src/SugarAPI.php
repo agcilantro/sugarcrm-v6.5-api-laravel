@@ -50,7 +50,7 @@ class SugarAPI
 
     }
 
-    function get_records($module, $query, $result_fields = array(), $order_by = '', $link_name_to_fields_array = array()) {
+    function get_records($module, $query, $select_fields = array(), $max_results = 1, $offset = 0, $order_by = '') {
         $get_entry_list_parameters = array(
             //session id
             'session' => $this->session_id,
@@ -61,13 +61,13 @@ class SugarAPI
             //The SQL ORDER BY clause without the phrase "order by".
             'order_by' => $order_by,
             //The record offset from which to start.
-            'offset' => 0,
+            'offset' => $offset,
             //A list of fields to include in the results.
-            'select_fields' => $result_fields,
+            'select_fields' => $select_fields,
             //A list of link names and the fields to be returned for each link name.
-            'link_name_to_fields_array' => $link_name_to_fields_array,
+            'link_name_to_fields_array' => array(),
             //The maximum number of results to return.
-            'max_results' => 2,
+            'max_results' => $max_results,
             //If deleted records should be included in results.
             'deleted' => 0,
             //If only records marked as favorites should be returned.
@@ -162,33 +162,39 @@ class SugarAPI
         return $result;
     }
 
-    function getValueFromResult($field, $result) {
-        if(array_key_exists('entry_list', $result)) {
-            $entry_list = $result['entry_list'];
-            if(!empty($entry_list)) {
-                $entry = $entry_list[0];
+    /**
+     * Converts an array name-value pairs (from the SugarCRM result.entry_list)
+     * to a simple one-dimensional associative array
+     *
+     * @param array $entry
+     * @return array
+     */
+    function getEntryAsAssoc($entry) {
+        $assoc_array = array();
+        $assoc_array['id'] = $entry['id'];
 
-                foreach ($entry['name_value_list'] as $item) {
-                    if($item['name'] == $field) {
-                        return $item['value'];
-                    }
-                }
-            }
+        foreach ($entry['name_value_list'] as $item) {
+            $assoc_array[$item['name']] = $item['value'];
         }
 
-        return false;
-
+        return $assoc_array;
     }
 
+
     /**
-     * Friendly welcome
+     * Converts arrays of name-value pairs (from the SugarCRM result.entry_list)
+     * to an array of simple one-dimensional associative arrays
      *
-     * @param string $phrase Phrase to return
-     *
-     * @return string Returns the phrase passed in
+     * @param array $entries
+     * @return array
      */
-    public function echoPhrase($phrase)
-    {
-        return $phrase;
+    function getEntriesAsAssoc($entries) {
+        $assoc_arrays = array();
+        foreach ($entries as $entry) {
+            $array = $this->getEntryAsAssoc($entry);
+            $assoc_arrays[] = $array;
+        }
+
+        return $assoc_arrays;
     }
 }
