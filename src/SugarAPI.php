@@ -79,6 +79,21 @@ class SugarAPI
         return $result;
     }
 
+    function get_record_by_id($module, $record_id, $select_fields = array(), $track_view = false) {
+        $get_entry_parameters = array(
+            'session' => $this->session_id,
+            'module_name' => $module,
+            'id' => $record_id,
+            'select_fields' = $select_fields,
+            'link_name_to_fields_array' => array(),
+            'track_view' = $track_view
+        );
+
+        $result = $this->nusoapClient->call('get_entry', $get_entry_parameters);
+
+        return $result;
+    }
+
     function count_records($module, $where) {
         $get_entries_count_parameters = array(
             //Session id
