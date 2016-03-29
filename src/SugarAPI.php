@@ -84,9 +84,9 @@ class SugarAPI
             'session' => $this->session_id,
             'module_name' => $module,
             'id' => $record_id,
-            'select_fields' = $select_fields,
+            'select_fields' => $select_fields,
             'link_name_to_fields_array' => array(),
-            'track_view' = $track_view
+            'track_view' => $track_view
         );
 
         $result = $this->nusoapClient->call('get_entry', $get_entry_parameters);
